@@ -1,4 +1,4 @@
-# mobilePhone商城开发
+# mobilePhone商城
 
 mobilePhone商城 项目市一套电商系统，包括: mobilePhone_mall (pc网页端)、mobilePhone_app(pe网页端)、mobilePhone_miniapp(小程序)、mobilePhone_admin(后台管理系统)、mobilePhone_api(数据接口)。
 
