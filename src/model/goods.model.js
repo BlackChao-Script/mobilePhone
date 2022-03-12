@@ -28,6 +28,7 @@ const Goods = seq.define(
     freezeTableName: true,
     timestamps: true,
     updatedAt: false,
+    paranoid: true,
     createdAt: 'createGoodsTime',
   }
 )

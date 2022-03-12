@@ -5,7 +5,8 @@ const { validatorGoods } = require('../middleware/goods.middleware')
 const {
   createGoods,
   modifyGoods,
-  deleteGoods,
+  goodsoffGoods,
+  goodsonGoods,
 } = require('../controller/goods.controller')
 
 // 创建商品
@@ -24,7 +25,9 @@ goods.put(
   validatorGoods,
   modifyGoods
 )
-// 删除商品
-goods.delete('/deletegoods/:id', auth, hadAdminPermission, deleteGoods)
+// 商品下架
+goods.post('/goodsoff/:id', auth, hadAdminPermission, goodsoffGoods)
+// 商品上架
+goods.post('/goodson/:id', auth, hadAdminPermission, goodsonGoods)
 
 module.exports = goods

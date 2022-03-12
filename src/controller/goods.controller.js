@@ -1,13 +1,15 @@
 const {
   createServiceGoods,
   modifyServiceGoods,
-  deleteServiceGoods,
+  goodsoffServiceGoods,
+  goodsonServiceGoods,
 } = require('../service/goods.service')
 const {
   createGoodsError,
   modifyGoodslId,
   modifyGoodsError,
-  deleteGoodsError,
+  goodsoffGoodsError,
+  goodsonGoodsError,
 } = require('../constant/err.type')
 
 class GoodsController {
@@ -43,18 +45,40 @@ class GoodsController {
       return ctx.app.emit('error', modifyGoodsError, ctx)
     }
   }
-  // 删除商品
-  async deleteGoods(ctx) {
+  // 下架商品
+  async goodsoffGoods(ctx) {
     try {
-      await deleteServiceGoods(ctx.params.id)
-      ctx.body = {
-        code: 0,
-        message: '删除商品数据成功',
-        resukt: '',
+      const res = await goodsoffServiceGoods(ctx.params.id)
+      if (res) {
+        ctx.body = {
+          code: 0,
+          message: '下架商品数据成功',
+          resukt: '',
+        }
+      } else {
+        return ctx.app.emit('error', modifyGoodslId, ctx)
       }
     } catch (err) {
-      console.error('删除商品数据失败', err)
-      return ctx.app.emit('error', deleteGoodsError, ctx)
+      console.error('下架商品数据失败', err)
+      return ctx.app.emit('error', goodsoffGoodsError, ctx)
+    }
+  }
+  // 上架商品
+  async goodsonGoods(ctx) {
+    const res = await goodsonServiceGoods(ctx.params.id)
+    try {
+      if (res) {
+        ctx.body = {
+          code: 0,
+          message: '上架商品数据成功',
+          resukt: '',
+        }
+      } else {
+        return ctx.app.emit('error', modifyGoodslId, ctx)
+      }
+    } catch (err) {
+      console.error('上架商品数据失败', err)
+      return ctx.app.emit('error', goodsonGoodsError, ctx)
     }
   }
 }

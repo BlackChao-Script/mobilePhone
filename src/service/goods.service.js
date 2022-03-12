@@ -11,10 +11,15 @@ class GoodsService {
     const res = await Goods.update(goodsData, { where: { id } })
     return res[0] > 0 ? true : false
   }
-  // 删除商品
-  async deleteServiceGoods(id) {
+  // 下架商品
+  async goodsoffServiceGoods(id) {
     const res = await Goods.destroy({ where: { id } })
-    return res[0] > 0 ? true : false
+    return res > 0 ? true : false
+  }
+  // 上架商品
+  async goodsonServiceGoods(id) {
+    const res = await Goods.restore({ where: { id } })
+    return res > 0 ? true : false
   }
 }
 

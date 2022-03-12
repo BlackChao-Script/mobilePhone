@@ -71,7 +71,7 @@ module.exports = {
   },
   modifyGoodslId: {
     code: '10022',
-    message: '修改的商品不存在',
+    message: '无效商品',
     result: '',
   },
   modifyGoodsError: {
@@ -79,9 +79,14 @@ module.exports = {
     message: '修改商品失败',
     result: '',
   },
-  deleteGoodsError: {
+  goodsoffGoodsError: {
     code: '10024',
-    message: '删除商品失败',
+    message: '下架商品失败',
+    result: '',
+  },
+  goodsonGoodsError: {
+    code: '10025',
+    message: '上架商品失败',
     result: '',
   },
 }
