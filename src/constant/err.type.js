@@ -29,4 +29,33 @@ module.exports = {
     message: '用户登录失败',
     result: '',
   },
+  updatePassowrdError: {
+    code: '10007',
+    message: '修改密码失败',
+    result: '',
+  },
+  TokenExpiredError: {
+    code: '10010',
+    message: 'token已过期',
+    result: '',
+  },
+  invalidToken: {
+    code: '10011',
+    message: 'token无效',
+    result: '',
+  },
+  hadAdminPermissionError: {
+    code: '10012',
+    message: '没有管理员权限',
+    result: '',
+  },
+  fileUploadError: {
+    code: '10013',
+    message: '上传失败',
+    result: '',
+  },
+  fileUploadTypeErroe: {
+    code: '10014',
+    message: '不支持该格式的文件',
+  },
 }

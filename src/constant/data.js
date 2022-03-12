@@ -8,6 +8,8 @@ const MYSQL_DB = 'mobilePhone'
 
 const JWT_SECRET = 'mobilePhone'
 
+const BASE_PATH = 'http://localhost:8080/uploads/'
+
 module.exports = {
   SERVICE_PORT,
   MYSQL_HOST,
@@ -16,4 +18,5 @@ module.exports = {
   MYSQL_PWD,
   MYSQL_DB,
   JWT_SECRET,
+  BASE_PATH,
 }
