@@ -1,11 +1,13 @@
 const {
   createServiceGoods,
   modifyServiceGoods,
+  deleteServiceGoods,
 } = require('../service/goods.service')
 const {
   createGoodsError,
   modifyGoodslId,
   modifyGoodsError,
+  deleteGoodsError,
 } = require('../constant/err.type')
 
 class GoodsController {
@@ -39,6 +41,20 @@ class GoodsController {
     } catch (err) {
       console.error('修改商品失败', err)
       return ctx.app.emit('error', modifyGoodsError, ctx)
+    }
+  }
+  // 删除商品
+  async deleteGoods(ctx) {
+    try {
+      await deleteServiceGoods(ctx.params.id)
+      ctx.body = {
+        code: 0,
+        message: '删除商品数据成功',
+        resukt: '',
+      }
+    } catch (err) {
+      console.error('删除商品数据失败', err)
+      return ctx.app.emit('error', deleteGoodsError, ctx)
     }
   }
 }

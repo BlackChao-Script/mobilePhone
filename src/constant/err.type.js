@@ -6,7 +6,7 @@ module.exports = {
   },
   userAlreadyExited: {
     code: '10002',
-    message: '用户名以及存在',
+    message: '用户名已存在',
     result: '',
   },
   userRegisterError: {
@@ -77,5 +77,11 @@ module.exports = {
   modifyGoodsError: {
     code: '10023',
     message: '修改商品失败',
+    result: '',
+  },
+  deleteGoodsError: {
+    code: '10024',
+    message: '删除商品失败',
+    result: '',
   },
 }

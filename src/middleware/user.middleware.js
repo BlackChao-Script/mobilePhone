@@ -25,12 +25,11 @@ const verifyUser = async (ctx, next) => {
     const res = await getUerInfo({ user_name })
     if (res) {
       console.log('用户名已经存在', { user_name })
-      ctx.app.emit('error', userAlreadyExited, ctx)
+      return ctx.app.emit('error', userAlreadyExited, ctx)
     }
   } catch (err) {
     console.error('获取用户信息错误', err)
-    ctx.app.emit('error', userRegisterError, ctx)
-    return
+    return ctx.app.emit('error', userRegisterError, ctx)
   }
   await next()
 }

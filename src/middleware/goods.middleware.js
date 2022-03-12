@@ -1,5 +1,5 @@
 const { validatorGoodsError } = require('../constant/err.type')
-// 校验上传商品数据
+// 校验商品数据
 const validatorGoods = async (ctx, next) => {
   try {
     ctx.verifyParams({

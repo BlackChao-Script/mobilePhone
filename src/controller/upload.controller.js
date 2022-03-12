@@ -3,6 +3,7 @@ const { fileUploadTypeError, fileUploadError } = require('../constant/err.type')
 const { BASE_PATH } = require('../constant/data')
 
 class UploadController {
+  // 上传
   async uploads(ctx) {
     const { file } = ctx.request.files
     const fileTypes = ['image/jpeg', 'image/png']

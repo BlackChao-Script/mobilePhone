@@ -2,7 +2,11 @@ const Router = require('koa-router')
 const goods = new Router()
 const { auth, hadAdminPermission } = require('../middleware/auth.middleware')
 const { validatorGoods } = require('../middleware/goods.middleware')
-const { createGoods, modifyGoods } = require('../controller/goods.controller')
+const {
+  createGoods,
+  modifyGoods,
+  deleteGoods,
+} = require('../controller/goods.controller')
 
 // 创建商品
 goods.post(
@@ -20,5 +24,7 @@ goods.put(
   validatorGoods,
   modifyGoods
 )
+// 删除商品
+goods.delete('/deletegoods/:id', auth, hadAdminPermission, deleteGoods)
 
 module.exports = goods
