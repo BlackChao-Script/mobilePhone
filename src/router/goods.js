@@ -7,6 +7,7 @@ const {
   modifyGoods,
   goodsoffGoods,
   goodsonGoods,
+  goodsList,
 } = require('../controller/goods.controller')
 
 // 创建商品
@@ -29,5 +30,7 @@ goods.put(
 goods.post('/goodsoff/:id', auth, hadAdminPermission, goodsoffGoods)
 // 商品上架
 goods.post('/goodson/:id', auth, hadAdminPermission, goodsonGoods)
+// 获取商品列表
+goods.get('/', goodsList)
 
 module.exports = goods

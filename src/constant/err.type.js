@@ -89,4 +89,8 @@ module.exports = {
     message: '上架商品失败',
     result: '',
   },
+  goodsListError: {
+    code: '10026',
+    message: '获取商品列表失败',
+  },
 }

@@ -3,6 +3,7 @@ const {
   modifyServiceGoods,
   goodsoffServiceGoods,
   goodsonServiceGoods,
+  getServiceGoods,
 } = require('../service/goods.service')
 const {
   createGoodsError,
@@ -10,6 +11,7 @@ const {
   modifyGoodsError,
   goodsoffGoodsError,
   goodsonGoodsError,
+  goodsListError,
 } = require('../constant/err.type')
 
 class GoodsController {
@@ -79,6 +81,21 @@ class GoodsController {
     } catch (err) {
       console.error('上架商品数据失败', err)
       return ctx.app.emit('error', goodsonGoodsError, ctx)
+    }
+  }
+  // 获取商品列表
+  async goodsList(ctx) {
+    const { pageNum = 1, pageSize = 12 } = ctx.request.query
+    try {
+      const res = await getServiceGoods(pageNum, pageSize)
+      ctx.body = {
+        code: 0,
+        message: '获取商品列表成功',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取商品列表失败', err)
+      return ctx.app.emit('error', goodsListError, ctx)
     }
   }
 }

@@ -21,6 +21,18 @@ class GoodsService {
     const res = await Goods.restore({ where: { id } })
     return res > 0 ? true : false
   }
+  // 获取商品
+  async getServiceGoods(paegNum, pageSize) {
+    const count = await Goods.count()
+    const offset = (paegNum - 1) * pageSize
+    const rows = await Goods.findAll({ offset: offset, limit: pageSize * 1 })
+    return {
+      paegNum,
+      pageSize,
+      total: count,
+      list: rows,
+    }
+  }
 }
 
 module.exports = new GoodsService()
