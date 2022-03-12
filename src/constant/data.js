@@ -1,4 +1,5 @@
 const SERVICE_PORT = 8080
+const BASE_PATH = 'http://localhost:8080/uploads/'
 
 const MYSQL_HOST = 'localhost'
 const MYSQL_PORT = '3306'
@@ -8,7 +9,7 @@ const MYSQL_DB = 'mobilePhone'
 
 const JWT_SECRET = 'mobilePhone'
 
-const BASE_PATH = 'http://localhost:8080/uploads/'
+
 
 module.exports = {
   SERVICE_PORT,

@@ -1,4 +1,5 @@
 const User = require('../model/user.model')
+
 class UserService {
   // 创建用户
   async createUser(user_name, password) {

@@ -10,8 +10,8 @@ const {
   verifyUser,
   crpytPassword,
   verifyLogin,
-  auth,
 } = require('../middleware/user.middleware')
+const { auth } = require('../middleware/auth.middleware')
 
 // 注册
 user.post('/register', userValidator, verifyUser, crpytPassword, register)

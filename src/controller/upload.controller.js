@@ -1,5 +1,5 @@
 const { basename } = require('path')
-const { fileUploadTypeErroe, fileUploadError } = require('../constant/err.type')
+const { fileUploadTypeError, fileUploadError } = require('../constant/err.type')
 const { BASE_PATH } = require('../constant/data')
 
 class UploadController {
@@ -8,7 +8,7 @@ class UploadController {
     const fileTypes = ['image/jpeg', 'image/png']
     if (file) {
       if (!fileTypes.includes(file.type)) {
-        return ctx.app.emit('error', fileUploadTypeErroe, ctx)
+        return ctx.app.emit('error', fileUploadTypeError, ctx)
       }
       ctx.body = {
         code: 0,

@@ -54,8 +54,28 @@ module.exports = {
     message: '上传失败',
     result: '',
   },
-  fileUploadTypeErroe: {
+  fileUploadTypeError: {
     code: '10014',
     message: '不支持该格式的文件',
+    result: '',
+  },
+  validatorGoodsError: {
+    code: '10020',
+    message: '商品参数格式错误',
+    result: '',
+  },
+  createGoodsError: {
+    codee: '10021',
+    message: '创建商品数据失败',
+    result: '',
+  },
+  modifyGoodslId: {
+    code: '10022',
+    message: '修改的商品不存在',
+    result: '',
+  },
+  modifyGoodsError: {
+    code: '10023',
+    message: '修改商品失败',
   },
 }
