@@ -1,4 +1,5 @@
 module.exports = {
+  // 用户错误
   userFormateError: {
     code: '10001',
     message: '用户名或密码为空',
@@ -34,6 +35,7 @@ module.exports = {
     message: '修改密码失败',
     result: '',
   },
+  // 权限错误
   TokenExpiredError: {
     code: '10010',
     message: 'token已过期',
@@ -49,6 +51,7 @@ module.exports = {
     message: '没有管理员权限',
     result: '',
   },
+  // 上传错误
   fileUploadError: {
     code: '10013',
     message: '上传失败',
@@ -59,6 +62,7 @@ module.exports = {
     message: '不支持该格式的文件',
     result: '',
   },
+  // 商品
   validatorGoodsError: {
     code: '10020',
     message: '商品参数格式错误',
@@ -92,5 +96,31 @@ module.exports = {
   goodsListError: {
     code: '10026',
     message: '获取商品列表失败',
+  },
+  // 轮播图错误
+  validatorCarouselError: {
+    code: '10030',
+    message: '轮播图参数格式错误',
+    result: '',
+  },
+  createcarouselError: {
+    code: '10031',
+    message: '创建轮播图失败',
+    result: '',
+  },
+  modifyCarouselError: {
+    code: '10032',
+    message: '修改轮播图失败',
+    result: '',
+  },
+  modifyCarouselId: {
+    code: '10033',
+    message: '无效轮播图',
+    result: '',
+  },
+  getCarouselError: {
+    code: '10034',
+    message: '获取轮播图列表失败',
+    result: '',
   },
 }

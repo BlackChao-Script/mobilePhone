@@ -23,6 +23,11 @@ const Goods = seq.define(
       allowNull: false,
       commit: '商品图片',
     },
+    sort_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      comment: '分类id',
+    },
   },
   {
     freezeTableName: true,
