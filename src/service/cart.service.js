@@ -48,10 +48,17 @@ class CartService {
     const res = await Cart.findByPk(id)
     if (!res) return ''
     number !== undefined ? (res.number = number) : ''
-    if (res.selected !== undefined) {
-      res.selected = selected
-    }
+    res.selected !== undefined ? (res.selected = selected) : ''
     return await res.save()
+  }
+  async deleteServiceCart(ids) {
+    return await Cart.destroy({
+      where: {
+        id: {
+          [Op.in]: ids,
+        },
+      },
+    })
   }
 }
 

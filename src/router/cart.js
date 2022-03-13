@@ -6,6 +6,7 @@ const {
   addCart,
   getCart,
   updateCart,
+  deleteCart,
 } = require('../controller/cart.controller')
 
 // 加入购物车
@@ -23,5 +24,7 @@ cart.patch(
   }),
   updateCart
 )
+// 删除购物车
+cart.delete('/', auth, validatorCart({ ids: 'array' }), deleteCart)
 
 module.exports = cart

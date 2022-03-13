@@ -2,12 +2,14 @@ const {
   addServiceCart,
   getServiceCart,
   updateServiceCart,
+  deleteServiceCart,
 } = require('../service/cart.service')
 const {
   addCartError,
   getCartError,
   updateCartError,
   updateCartBodyUnd,
+  deleteCartError,
 } = require('../constant/err.type')
 
 class CartController {
@@ -60,6 +62,21 @@ class CartController {
     } catch (err) {
       console.error('更新购物车失败', err)
       return ctx.app.emit('error', updateCartError, ctx)
+    }
+  }
+  // 删除购物车
+  async deleteCart(ctx) {
+    const { ids } = ctx.request.body
+    try {
+      const res = await deleteServiceCart(ids)
+      ctx.body = {
+        code: 0,
+        message: '删除购物车成功',
+        result: res,
+      }
+    } catch (err) {
+      console.error('删除购物车失败', err)
+      return ctx.app.emit('error', deleteCartError, ctx)
     }
   }
 }

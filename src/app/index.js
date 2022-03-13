@@ -16,6 +16,7 @@ app.use(
       uploadDir: join(__dirname, '../assets/uploads'),
       keepExtensions: true,
     },
+    parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE'],
   })
 )
 app.use(Static(join(__dirname, '../assets')))

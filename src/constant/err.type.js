@@ -149,4 +149,9 @@ module.exports = {
     message: 'number与selected不能同时为空',
     result: '',
   },
+  deleteCartError: {
+    code: '10045',
+    message: '删除购物车失败',
+    result: '',
+  },
 }
