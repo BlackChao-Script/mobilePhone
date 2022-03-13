@@ -2,6 +2,7 @@ const { Op } = require('sequelize')
 const Cart = require('../model/cart.model')
 const Goods = require('../model/goods.model')
 class CartService {
+  // 添加购物车
   async addServiceCart(user_id, goods_id) {
     const res = await Cart.findOne({
       where: {
@@ -24,6 +25,7 @@ class CartService {
       })
     }
   }
+  // 获取购物车
   async getServiceCart(pageNum, pageSzie) {
     const offset = (pageNum - 1) * pageSzie
     const { count, rows } = await Cart.findAndCountAll({
@@ -43,6 +45,7 @@ class CartService {
       list: rows,
     }
   }
+  // 更新购物车
   async updateServiceCart(...params) {
     const [id, number, selected] = params
     const res = await Cart.findByPk(id)
@@ -51,6 +54,7 @@ class CartService {
     res.selected !== undefined ? (res.selected = selected) : ''
     return await res.save()
   }
+  // 删除购物车
   async deleteServiceCart(ids) {
     return await Cart.destroy({
       where: {
