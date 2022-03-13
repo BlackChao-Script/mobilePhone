@@ -40,4 +40,5 @@ const Goods = seq.define(
 
 // Goods.sync({ alter: true })
 
+
 module.exports = Goods

@@ -22,12 +22,12 @@ class GoodsService {
     return res > 0 ? true : false
   }
   // 获取商品
-  async getServiceGoods(paegNum, pageSize) {
+  async getServiceGoods(pageNum, pageSize) {
     const count = await Goods.count()
-    const offset = (paegNum - 1) * pageSize
+    const offset = (pageNum - 1) * pageSize
     const rows = await Goods.findAll({ offset: offset, limit: pageSize * 1 })
     return {
-      paegNum,
+      pageNum,
       pageSize,
       total: count,
       list: rows,

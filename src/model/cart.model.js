@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize')
 const seq = require('../db/seq')
+const Goods = require('./goods.model')
 const Cart = seq.define(
   'mobilePhone_cart',
   {
@@ -23,7 +24,7 @@ const Cart = seq.define(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
-      comment:'是否选中'
+      comment: '是否选中',
     },
   },
   {
@@ -33,5 +34,10 @@ const Cart = seq.define(
 )
 
 // Cart.sync({ alter: true })
+
+Cart.belongsTo(Goods, {
+  foreignKey: 'goods_id',
+  as: 'goods_info',
+})
 
 module.exports = Cart

@@ -1,9 +1,11 @@
 const { Op } = require('sequelize')
 const Cart = require('../model/cart.model')
+const Goods = require('../model/goods.model')
 class CartService {
   async addServiceCart(user_id, goods_id) {
     const res = await Cart.findOne({
       where: {
+        // 查找user_id与goods_id
         [Op.and]: {
           user_id,
           goods_id,
@@ -11,7 +13,9 @@ class CartService {
       },
     })
     if (res) {
+      // number递增
       await res.increment('number')
+      // 重新加载数据库数据
       return await res.reload()
     } else {
       return await Cart.create({
@@ -19,6 +23,35 @@ class CartService {
         goods_id,
       })
     }
+  }
+  async getServiceCart(pageNum, pageSzie) {
+    const offset = (pageNum - 1) * pageSzie
+    const { count, rows } = await Cart.findAndCountAll({
+      attributes: ['id', 'number', 'selected'],
+      offset,
+      limit: pageSzie * 1,
+      include: {
+        model: Goods,
+        as: 'goods_info',
+        attributes: ['id', 'goods_name', 'goods_price', 'goods_img'],
+      },
+    })
+    return {
+      pageNum,
+      pageSzie,
+      total: count,
+      list: rows,
+    }
+  }
+  async updateServiceCart(...params) {
+    const [id, number, selected] = params
+    const res = await Cart.findByPk(id)
+    if (!res) return ''
+    number !== undefined ? (res.number = number) : ''
+    if (res.selected !== undefined) {
+      res.selected = selected
+    }
+    return await res.save()
   }
 }
 

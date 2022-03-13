@@ -129,4 +129,24 @@ module.exports = {
     message: '购物车参数格式错误',
     result: '',
   },
+  addCartError: {
+    code: '10041',
+    message: '添加购物车失败',
+    result: '',
+  },
+  getCartError: {
+    code: '10042',
+    message: '获取购物车列表失败',
+    result: '',
+  },
+  updateCartError: {
+    code: '10043',
+    message: '更新购物车失败',
+    result: '',
+  },
+  updateCartBodyUnd: {
+    code: '10044',
+    message: 'number与selected不能同时为空',
+    result: '',
+  },
 }
