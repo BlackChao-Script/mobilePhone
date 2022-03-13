@@ -3,6 +3,7 @@ const {
   getServiceCart,
   updateServiceCart,
   deleteServiceCart,
+  selectServiceAllCarts,
 } = require('../service/cart.service')
 const {
   addCartError,
@@ -10,6 +11,7 @@ const {
   updateCartError,
   updateCartBodyUnd,
   deleteCartError,
+  selectAllCartError,
 } = require('../constant/err.type')
 
 class CartController {
@@ -77,6 +79,26 @@ class CartController {
     } catch (err) {
       console.error('删除购物车失败', err)
       return ctx.app.emit('error', deleteCartError, ctx)
+    }
+  }
+  // 全选与取消全选
+  selectAllCart = (selected) => {
+    return async (ctx) => {
+      const { id } = ctx.state.user
+      let message = ''
+      selected == true ? message = '全选' : message = '取消全选'
+      try {
+        const res = await selectServiceAllCarts(id, selected)
+        ctx.body = {
+          code: 0,
+          message: `${message}成功`,
+          result: res,
+        }
+      } catch (err) {
+        console.error(`${message}失败`, err)
+        selectAllCartError.message = `${message}失败`
+        return ctx.add.emit('error', selectAllCartError, ctx)
+      }
     }
   }
 }

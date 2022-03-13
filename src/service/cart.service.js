@@ -64,6 +64,17 @@ class CartService {
       },
     })
   }
+  // 全选与取消全选
+  async selectServiceAllCarts(user_id, selected) {
+    return await Cart.update(
+      { selected },
+      {
+        where: {
+          user_id,
+        },
+      }
+    )
+  }
 }
 
 module.exports = new CartService()

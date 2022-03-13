@@ -154,4 +154,9 @@ module.exports = {
     message: '删除购物车失败',
     result: '',
   },
+  selectAllCartError: {
+    code: '10046',
+    message: '',
+    result: '',
+  },
 }

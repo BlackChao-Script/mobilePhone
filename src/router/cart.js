@@ -7,6 +7,7 @@ const {
   getCart,
   updateCart,
   deleteCart,
+  selectAllCart,
 } = require('../controller/cart.controller')
 
 // 加入购物车
@@ -26,5 +27,9 @@ cart.patch(
 )
 // 删除购物车
 cart.delete('/', auth, validatorCart({ ids: 'array' }), deleteCart)
+// 全选
+cart.post('/selectAll', auth, selectAllCart(true))
+// 全不选
+cart.post('/unselectAll', auth, selectAllCart(false))
 
 module.exports = cart
