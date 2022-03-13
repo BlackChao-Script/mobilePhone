@@ -9,7 +9,7 @@ const validatorGoods = async (ctx, next) => {
       goods_img: { type: 'string', required: true },
     })
   } catch (err) {
-    console.err(err)
+    console.error(err)
     validatorGoodsError.result = err
     return ctx.app.emit('error', validatorGoodsError, ctx)
   }

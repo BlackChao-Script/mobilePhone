@@ -4,6 +4,7 @@ const user = require('./user')
 const upload = require('./upload')
 const goods = require('./goods')
 const carousel = require('./carousel')
+const cart = require('./cart')
 
 // 用户接口
 router.use('/user', user.routes(), user.allowedMethods())
@@ -13,5 +14,7 @@ router.use('/upload', upload.routes(), upload.allowedMethods())
 router.use('/goods', goods.routes(), goods.allowedMethods())
 // 轮播图接口
 router.use('/carousel', carousel.routes(), carousel.allowedMethods())
+// 购物车接口
+router.use('/cart', cart.routes(), cart.allowedMethods())
 
 module.exports = router

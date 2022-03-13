@@ -123,4 +123,10 @@ module.exports = {
     message: '获取轮播图列表失败',
     result: '',
   },
+  // 购物车
+  validatorCartError: {
+    code: '10040',
+    message: '购物车参数格式错误',
+    result: '',
+  },
 }
