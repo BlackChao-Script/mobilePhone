@@ -2,7 +2,13 @@ const Router = require('koa-router')
 const address = new Router()
 const { auth } = require('../middleware/auth.middleware')
 const { validatorAddress } = require('../middleware/address.middleware')
-const { addtoaddress, getAddress } = require('../controller/address.controller')
+const {
+  addtoaddress,
+  getAddress,
+  modifyAddress,
+  deleteAddress,
+  isDefault,
+} = require('../controller/address.controller')
 
 // 添加地址
 address.post(
@@ -18,9 +24,19 @@ address.post(
 // 获取地址列表
 address.get('/', auth, getAddress)
 // 修改地址
-
+address.put(
+  '/:id',
+  auth,
+  validatorAddress({
+    consignee: 'string',
+    phone: { type: 'string', format: /^1[3456789]\d{9}$/ },
+    address: 'string',
+  }),
+  modifyAddress
+)
 // 删除地址
-
+address.delete('/:id', auth, deleteAddress)
 // 设为默认地址
+address.patch('/:id', auth, isDefault)
 
 module.exports = address

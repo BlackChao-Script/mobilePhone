@@ -175,4 +175,19 @@ module.exports = {
     message: '获取地址列表失败',
     result: '',
   },
+  modifyAddressError: {
+    code: '10053',
+    message: '修改地址列表失败',
+    result: '',
+  },
+  deleteAddressError: {
+    code: '10054',
+    message: '删除地址失败',
+    result: '',
+  },
+  isDefaultError: {
+    code: '10055',
+    message: '设为默认地址失败',
+    result: '',
+  },
 }
