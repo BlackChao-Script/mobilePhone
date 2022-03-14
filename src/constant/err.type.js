@@ -170,4 +170,9 @@ module.exports = {
     message: '添加地址失败',
     result: '',
   },
+  getAddressError: {
+    code: '10052',
+    message: '获取地址列表失败',
+    result: '',
+  },
 }
