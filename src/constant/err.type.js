@@ -123,7 +123,7 @@ module.exports = {
     message: '获取轮播图列表失败',
     result: '',
   },
-  // 购物车
+  // 购物车错误
   validatorCartError: {
     code: '10040',
     message: '购物车参数格式错误',
@@ -157,6 +157,17 @@ module.exports = {
   selectAllCartError: {
     code: '10046',
     message: '',
+    result: '',
+  },
+  // 地址错误
+  validatorAddressError: {
+    code: '10050',
+    message: '地址参数格式错误',
+    result: '',
+  },
+  addtoaddressError: {
+    code: '10051',
+    message: '添加地址失败',
     result: '',
   },
 }
