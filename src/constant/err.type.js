@@ -190,4 +190,9 @@ module.exports = {
     message: '设为默认地址失败',
     result: '',
   },
+  // 订单错误
+  validatorOrder: {
+    code: '10060',
+    message: '校验订单格式错误',
+  },
 }
