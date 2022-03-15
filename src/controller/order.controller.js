@@ -1,5 +1,13 @@
-const { createServiceOrder } = require('../service/order.service')
-const { createOrderError } = require('../constant/err.type')
+const {
+  createServiceOrder,
+  getServiceOrder,
+  updateServiceOrder,
+} = require('../service/order.service')
+const {
+  createOrderError,
+  getOrderError,
+  updateOrderError,
+} = require('../constant/err.type')
 
 class OrderController {
   // 生成订单
@@ -23,6 +31,37 @@ class OrderController {
     } catch (err) {
       console.error('生成订单失败', err)
       return ctx.app.emit('error', createOrderError, ctx)
+    }
+  }
+  // 获取订单列表
+  async getOrder(ctx) {
+    const { pageNum = 1, pageSize = 6, state = 0 } = ctx.request.query
+    try {
+      const res = await getServiceOrder(pageNum, pageSize, state)
+      ctx.body = {
+        code: 0,
+        message: '获取订单列表成功',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取订单列表失败', err)
+      return ctx.app.emit('error', getOrderError, ctx)
+    }
+  }
+  // 更新订单状态
+  async updateOrder(ctx) {
+    const { id } = ctx.request.params
+    const { state } = ctx.request.body
+    try {
+      const res = await updateServiceOrder(id, state)
+      ctx.body = {
+        code: 0,
+        message: '更新订单状态成功',
+        result: res,
+      }
+    } catch (err) {
+      console.error('更新订单状态失败', err)
+      return ctx.app.emit('error', updateOrderError, ctx)
     }
   }
 }

@@ -5,6 +5,28 @@ class OrderService {
   async createServiceOrder(order) {
     return await Order.create(order)
   }
+  // 获取订单列表
+  async getServiceOrder(pageNum, pageSize, state) {
+    const offset = (pageNum - 1) * pageSize
+    const { count, rows } = await Order.findAndCountAll({
+      attributes: ['goods_info', 'total', 'order_number', 'state'],
+      where: {
+        state,
+      },
+      offset,
+      limit: pageSize * 1,
+    })
+    return {
+      pageNum,
+      pageSize,
+      total: count,
+      list: rows,
+    }
+  }
+  // 更新订单状态
+  async updateServiceOrder(id, state) {
+    return await Order.update({ state }, { where: { id } })
+  }
 }
 
 module.exports = new OrderService()

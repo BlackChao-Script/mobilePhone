@@ -194,5 +194,21 @@ module.exports = {
   validatorOrder: {
     code: '10060',
     message: '校验订单格式错误',
+    result: '',
+  },
+  createOrderError: {
+    code: '10061',
+    message: '生成订单失败',
+    result: '',
+  },
+  getOrderError: {
+    code: '10062',
+    message: '获取订单列表失败',
+    result: '',
+  },
+  updateOrderError: {
+    code: '10063',
+    message: '更新订单状态失败',
+    result: '',
   },
 }
