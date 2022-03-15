@@ -217,4 +217,28 @@ module.exports = {
     message: '分类数据参数错误',
     result: '',
   },
+  addSortError: {
+    code: '10065',
+    message: '添加分类数据失败',
+    result: '',
+  },
+  modifySortError: {
+    code: '10066',
+    message: '修改分类数据失败',
+    result: '',
+  },
+  deleteSortError: {
+    code: '10067',
+    message: '删除分类失败',
+    result: '',
+  },
+  getSortError: {
+    code: '10068',
+    message: '获取分类列表失败',
+    result: '',
+  },
+  getSortDataError: {
+    code: '10069',
+    message: '获取分类详细失败',
+  },
 }
