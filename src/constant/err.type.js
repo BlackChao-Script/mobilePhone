@@ -211,4 +211,10 @@ module.exports = {
     message: '更新订单状态失败',
     result: '',
   },
+  // 分类错误
+  validatorSortError: {
+    code: '10064',
+    message: '分类数据参数错误',
+    result: '',
+  },
 }

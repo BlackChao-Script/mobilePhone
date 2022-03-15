@@ -7,6 +7,7 @@ const carousel = require('./carousel')
 const cart = require('./cart')
 const address = require('./address')
 const order = require('./order')
+const sort = require('./sort')
 
 // 用户接口
 router.use('/user', user.routes(), user.allowedMethods())
@@ -22,5 +23,7 @@ router.use('/cart', cart.routes(), cart.allowedMethods())
 router.use('/address', address.routes(), address.allowedMethods())
 // 订单接口
 router.use('/order', order.routes(), order.allowedMethods())
+// 分类接口
+router.use('/sort', sort.routes(), sort.allowedMethods())
 
 module.exports = router
