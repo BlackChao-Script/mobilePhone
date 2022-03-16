@@ -27,6 +27,13 @@ class OrderService {
   async updateServiceOrder(id, state) {
     return await Order.update({ state }, { where: { id } })
   }
+  // 获取订单数量
+  async getServiceOrderNum() {
+    const res = await Order.findAll()
+    return {
+      number: res.length,
+    }
+  }
 }
 
 module.exports = new OrderService()

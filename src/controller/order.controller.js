@@ -2,11 +2,13 @@ const {
   createServiceOrder,
   getServiceOrder,
   updateServiceOrder,
+  getServiceOrderNum,
 } = require('../service/order.service')
 const {
   createOrderError,
   getOrderError,
   updateOrderError,
+  getOrderNumError,
 } = require('../constant/err.type')
 
 class OrderController {
@@ -62,6 +64,20 @@ class OrderController {
     } catch (err) {
       console.error('更新订单状态失败', err)
       return ctx.app.emit('error', updateOrderError, ctx)
+    }
+  }
+  // 获取订单数量
+  async getOrderNum(ctx) {
+    try {
+      const res = await getServiceOrderNum()
+      ctx.body = {
+        code: 0,
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取订单数量失败', err)
+      return ctx.app.emit('error', getOrderNumError, ctx)
     }
   }
 }

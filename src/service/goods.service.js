@@ -33,6 +33,13 @@ class GoodsService {
       list: rows,
     }
   }
+  // 获取商品数量
+  async getServiceGoodsNumber() {
+    const res = await Goods.findAll()
+    return {
+      number: res.length,
+    }
+  }
 }
 
 module.exports = new GoodsService()

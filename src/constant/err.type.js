@@ -101,6 +101,12 @@ module.exports = {
   goodsListError: {
     code: '10026',
     message: '获取商品列表失败',
+    result: '',
+  },
+  getGoodsNumberError: {
+    code: '10027',
+    messageL: '获取商品数量失败',
+    result: '',
   },
   // 轮播图错误
   validatorCarouselError: {
@@ -214,6 +220,11 @@ module.exports = {
   updateOrderError: {
     code: '10063',
     message: '更新订单状态失败',
+    result: '',
+  },
+  getOrderNumError: {
+    code: '10064',
+    message: '获取订单数量失败',
     result: '',
   },
   // 分类错误
