@@ -25,6 +25,13 @@ class UserService {
     const res = await User.update(newUser, { where: whereOpt })
     return res[0] > 0 ? true : false
   }
+  // 获取用户数量
+  async getServiceUserNum() {
+    const res = await User.findAll()
+    return {
+      number: res.length,
+    }
+  }
 }
 
 module.exports = new UserService()

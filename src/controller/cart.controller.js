@@ -33,9 +33,10 @@ class CartController {
   }
   // 获取购物车列表
   async getCart(ctx) {
+    const user_id = ctx.state.user.id
     const { pageNum = 1, pageSize = 12 } = ctx.request.query
     try {
-      const res = await getServiceCart(pageNum, pageSize)
+      const res = await getServiceCart(user_id,pageNum, pageSize)
       ctx.body = {
         code: 0,
         message: '获取购物车列表成功',

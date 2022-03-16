@@ -26,10 +26,11 @@ class CartService {
     }
   }
   // 获取购物车
-  async getServiceCart(pageNum, pageSzie) {
+  async getServiceCart(user_id, pageNum, pageSzie) {
     const offset = (pageNum - 1) * pageSzie
     const { count, rows } = await Cart.findAndCountAll({
       attributes: ['id', 'number', 'selected'],
+      where: { user_id },
       offset,
       limit: pageSzie * 1,
       include: {

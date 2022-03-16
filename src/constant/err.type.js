@@ -35,6 +35,11 @@ module.exports = {
     message: '修改密码失败',
     result: '',
   },
+  getUserNumError: {
+    code: '10008',
+    message: '获取用户数量失败',
+    result: '',
+  },
   // 权限错误
   TokenExpiredError: {
     code: '10010',

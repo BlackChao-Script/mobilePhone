@@ -4,6 +4,7 @@ const {
   register,
   login,
   changePassword,
+  getUserNum,
 } = require('../controller/user.controller')
 const {
   userValidator,
@@ -19,5 +20,7 @@ user.post('/register', userValidator, verifyUser, crpytPassword, register)
 user.post('/login', userValidator, verifyLogin, login)
 // 修改密码
 user.patch('/modify', auth, crpytPassword, changePassword)
+// 获取用户数量
+user.get('/', getUserNum)
 
 module.exports = user

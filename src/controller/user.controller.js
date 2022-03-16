@@ -2,10 +2,15 @@ const {
   createUser,
   getUerInfo,
   updateById,
+  getServiceUserNum,
 } = require('../service/user.service')
 const { JWT_SECRET } = require('../constant/data')
 const jwt = require('jsonwebtoken')
-const { userLoginError, updatePassowrdError } = require('../constant/err.type')
+const {
+  userLoginError,
+  updatePassowrdError,
+  getUserNumError,
+} = require('../constant/err.type')
 class UserController {
   // 注册
   async register(ctx) {
@@ -51,6 +56,20 @@ class UserController {
     } catch (err) {
       console.error('修改密码失败', err)
       return ctx.app.emit('error', updatePassowrdError, ctx)
+    }
+  }
+  // 获取用户数量
+  async getUserNum(ctx) {
+    try {
+      const res = await getServiceUserNum()
+      ctx.body = {
+        code: 0,
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取用户数量失败', err)
+      return ctx.app.emit('error', getUserNumError, ctx)
     }
   }
 }
