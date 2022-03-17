@@ -256,5 +256,32 @@ module.exports = {
   getSortDataError: {
     code: '10069',
     message: '获取分类详细失败',
+    result: '',
+  },
+  // todo错误
+  validatorTodoError: {
+    code: '10070',
+    message: 'todo数据参数错误',
+    result: '',
+  },
+  addTodoError: {
+    code: '10071',
+    message: '添加todo失败',
+    result: '',
+  },
+  getTodoError: {
+    code: '10072',
+    message: '获取todo失败',
+    result: '',
+  },
+  deletetTodoError: {
+    code: '10073',
+    message: '删除todo失败',
+    result: '',
+  },
+  patchTodoError: {
+    code: '10074',
+    message: '',
+    result: '',
   },
 }

@@ -8,6 +8,7 @@ const cart = require('./cart')
 const address = require('./address')
 const order = require('./order')
 const sort = require('./sort')
+const todo = require('./todo')
 
 // 用户接口
 router.use('/user', user.routes(), user.allowedMethods())
@@ -25,5 +26,7 @@ router.use('/address', address.routes(), address.allowedMethods())
 router.use('/order', order.routes(), order.allowedMethods())
 // 分类接口
 router.use('/sort', sort.routes(), sort.allowedMethods())
+// todo接口
+router.use('/todo', todo.routes(), todo.allowedMethods())
 
 module.exports = router
