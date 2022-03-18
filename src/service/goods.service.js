@@ -1,4 +1,5 @@
 const Goods = require('../model/goods.model')
+const { BASE_PATH } = require('../constant/data')
 
 class GoodsService {
   // 创建商品
@@ -26,6 +27,9 @@ class GoodsService {
     const count = await Goods.count()
     const offset = (pageNum - 1) * pageSize
     const rows = await Goods.findAll({ offset: offset, limit: pageSize * 1 })
+    rows.forEach((element) => {
+      element.dataValues.goods_img = BASE_PATH + element.dataValues.goods_img
+    })
     return {
       pageNum,
       pageSize,
