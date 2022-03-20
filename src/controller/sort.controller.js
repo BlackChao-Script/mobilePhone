@@ -61,7 +61,7 @@ class SortController {
       const res = await getServiceSort()
       ctx.body = {
         code: 0,
-        message: '获取分类数据列表',
+        message: '',
         result: res,
       }
     } catch (err) {

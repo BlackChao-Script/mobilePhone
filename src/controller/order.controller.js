@@ -42,7 +42,7 @@ class OrderController {
       const res = await getServiceOrder(pageNum, pageSize, state)
       ctx.body = {
         code: 0,
-        message: '获取订单列表成功',
+        message: '',
         result: res,
       }
     } catch (err) {

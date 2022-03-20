@@ -39,7 +39,7 @@ class CartController {
       const res = await getServiceCart(user_id,pageNum, pageSize)
       ctx.body = {
         code: 0,
-        message: '获取购物车列表成功',
+        message: '',
         result: res,
       }
     } catch (err) {

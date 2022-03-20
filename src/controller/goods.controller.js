@@ -92,7 +92,7 @@ class GoodsController {
       const res = await getServiceGoods(pageNum, pageSize)
       ctx.body = {
         code: 0,
-        message: '获取商品列表成功',
+        message: '',
         result: res,
       }
     } catch (err) {
