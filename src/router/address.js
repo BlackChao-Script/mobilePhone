@@ -5,6 +5,7 @@ const { validatorAddress } = require('../middleware/address.middleware')
 const {
   addtoaddress,
   getAddress,
+  getAddressAdmin,
   modifyAddress,
   deleteAddress,
   isDefault,
@@ -23,6 +24,8 @@ address.post(
 )
 // 获取地址列表
 address.get('/', auth, getAddress)
+// 获取地址列表(管理员后台)
+address.get('/admin', auth, getAddressAdmin)
 // 修改地址
 address.put(
   '/:id',

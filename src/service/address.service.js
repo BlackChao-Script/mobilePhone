@@ -12,6 +12,10 @@ class AddressService {
       where: { user_id },
     })
   }
+  // 获取地址(管理员后台)
+  async getServiceAddressAdmin() {
+    return await Address.findAll()
+  }
   // 修改地址
   async modifyServiceAddress(id, params) {
     const res = await Address.update(params, { where: { id } })

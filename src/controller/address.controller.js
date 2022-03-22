@@ -1,6 +1,7 @@
 const {
   addtoServiceAddress,
   getServiceAddress,
+  getServiceAddressAdmin,
   modifyServiceAddress,
   deleteServiceAddress,
   isServiceDefault,
@@ -35,14 +36,28 @@ class AddressController {
       return ctx.app.emit('error', addtoaddressError, ctx)
     }
   }
-  // 获取地址列表
+  // 获取地址列表(用户界面)
   async getAddress(ctx) {
     const user_id = ctx.state.user.id
     try {
       const res = await getServiceAddress(user_id)
       ctx.body = {
         code: 0,
-        message: '获取地址列表成功',
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取地址列表失败', err)
+      return ctx.app.emit('error', getAddressError, ctx)
+    }
+  }
+  // 获取地址列表(管理员后台)
+  async getAddressAdmin(ctx) {
+    try {
+      const res = await getServiceAddressAdmin()
+      ctx.body = {
+        code: 0,
+        message: '',
         result: res,
       }
     } catch (err) {

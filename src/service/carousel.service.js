@@ -1,4 +1,5 @@
 const Carousel = require('../model/carousel.model')
+const { BASE_PATH } = require('../constant/data')
 
 class CarouselService {
   // 创建轮播图
@@ -19,6 +20,10 @@ class CarouselService {
   // 获取轮播图
   async getServiceCarousel() {
     const res = await Carousel.findAll()
+    res.forEach((element) => {
+      element.dataValues.carousel_src =
+        BASE_PATH + element.dataValues.carousel_src
+    })
     return {
       list: res,
     }

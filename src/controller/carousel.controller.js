@@ -64,7 +64,7 @@ class CarouselController {
       const res = await getServiceCarousel()
       ctx.body = {
         code: 0,
-        message: '获取轮播图数据成功',
+        message: '',
         result: res,
       }
     } catch (err) {

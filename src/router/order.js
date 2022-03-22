@@ -6,7 +6,7 @@ const {
   createOrder,
   getOrder,
   updateOrder,
-  getOrderNum
+  getOrderNum,
 } = require('../controller/order.controller')
 
 // 提交订单
@@ -32,6 +32,6 @@ order.patch(
   updateOrder
 )
 // 获取订单数量
-order.get('/ordernum',getOrderNum)
+order.get('/ordernum', getOrderNum)
 
 module.exports = order

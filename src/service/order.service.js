@@ -9,10 +9,17 @@ class OrderService {
   async getServiceOrder(pageNum, pageSize, state) {
     const offset = (pageNum - 1) * pageSize
     const { count, rows } = await Order.findAndCountAll({
-      attributes: ['goods_info', 'total', 'order_number', 'state'],
-      where: {
-        state,
-      },
+      attributes: [
+        'id',
+        'goods_info',
+        'total',
+        'order_number',
+        'address_id',
+        'state',
+      ],
+      // where: {
+      //   state,
+      // },
       offset,
       limit: pageSize * 1,
     })
