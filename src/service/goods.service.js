@@ -37,6 +37,8 @@ class GoodsService {
       list: rows,
     }
   }
+  // 获取商品详细
+  async getServiceGoodsData(id) {}
   // 获取商品数量
   async getServiceGoodsNumber() {
     const res = await Goods.findAll()

@@ -4,6 +4,7 @@ const {
   goodsoffServiceGoods,
   goodsonServiceGoods,
   getServiceGoods,
+  getServiceGoodsData,
   getServiceGoodsNumber,
 } = require('../service/goods.service')
 const {
@@ -14,6 +15,7 @@ const {
   goodsonGoodsError,
   goodsListError,
   getGoodsNumberError,
+  getGoodsError,
 } = require('../constant/err.type')
 
 class GoodsController {
@@ -112,6 +114,21 @@ class GoodsController {
     } catch (err) {
       console.error('获取商品数量失败', err)
       return ctx.app.emit('error', getGoodsNumberError, ctx)
+    }
+  }
+  // 获取商品详细
+  async getGoods(ctx) {
+    const { id } = ctx.ctx.request.query
+    try {
+      const res = await getServiceGoodsData(id)
+      ctx.body = {
+        code: 0,
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取商品详细失败', err)
+      return ctx.app.emit('error', getGoodsError, ctx)
     }
   }
 }

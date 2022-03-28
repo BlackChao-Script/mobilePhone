@@ -110,7 +110,12 @@ module.exports = {
   },
   getGoodsNumberError: {
     code: '10027',
-    messageL: '获取商品数量失败',
+    message: '获取商品数量失败',
+    result: '',
+  },
+  getGoodsError: {
+    code: '10028',
+    message: '获取商品详细失败',
     result: '',
   },
   // 轮播图错误

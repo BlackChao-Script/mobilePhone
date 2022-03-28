@@ -9,6 +9,7 @@ const {
   goodsonGoods,
   goodsList,
   getGoodsNumber,
+  getGoods,
 } = require('../controller/goods.controller')
 
 // 创建商品
@@ -35,5 +36,7 @@ goods.post('/goodson/:id', auth, hadAdminPermission, goodsonGoods)
 goods.get('/', goodsList)
 // 获取商品总数
 goods.get('/getnumber', getGoodsNumber)
+// 获取商品详细数据
+goods.get('getGoods', auth, getGoods)
 
 module.exports = goods
