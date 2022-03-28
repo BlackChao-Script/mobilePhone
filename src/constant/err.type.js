@@ -40,6 +40,11 @@ module.exports = {
     message: '获取用户数量失败',
     result: '',
   },
+  getUserInfoError: {
+    code: '10009',
+    message: '获取用户信息失败',
+    result: '',
+  },
   // 权限错误
   TokenExpiredError: {
     code: '10010',

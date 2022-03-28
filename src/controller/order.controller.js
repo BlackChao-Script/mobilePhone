@@ -1,5 +1,6 @@
 const {
   createServiceOrder,
+  getUserServiceOrder,
   getServiceOrder,
   updateServiceOrder,
   getServiceOrderNum,
@@ -35,11 +36,27 @@ class OrderController {
       return ctx.app.emit('error', createOrderError, ctx)
     }
   }
-  // 获取订单列表
-  async getOrder(ctx) {
-    const { pageNum = 1, pageSize = 6, state = 0 } = ctx.request.query
+  // 获取订单列表(用户)
+  async getUserOrder(ctx) {
+    const user_id = ctx.state.user.id
+    const { pageNum = 1, pageSize = 6 } = ctx.request.query
     try {
-      const res = await getServiceOrder(pageNum, pageSize, state)
+      const res = await getUserServiceOrder(pageNum, pageSize, user_id)
+      ctx.body = {
+        code: 0,
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取订单列表失败', err)
+      return ctx.app.emit('error', getOrderError, ctx)
+    }
+  }
+  // 获取订单列表(管理员后台)
+  async getOrder(ctx) {
+    const { pageNum = 1, pageSize = 6 } = ctx.request.query
+    try {
+      const res = await getServiceOrder(pageNum, pageSize)
       ctx.body = {
         code: 0,
         message: '',

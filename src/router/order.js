@@ -4,6 +4,7 @@ const { auth } = require('../middleware/auth.middleware')
 const { validatorOrder } = require('../middleware/order.middleware')
 const {
   createOrder,
+  getUserOrder,
   getOrder,
   updateOrder,
   getOrderNum,
@@ -20,7 +21,9 @@ order.post(
   }),
   createOrder
 )
-// 获取订单列表
+// 获取订单列表(用户)
+order.get('/user', auth, getUserOrder)
+// 获取订单列表(管理员后台)
 order.get('/', auth, getOrder)
 // 更新订单状态
 order.patch(

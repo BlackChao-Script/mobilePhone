@@ -1,12 +1,42 @@
 const Order = require('../model/order.model')
+const Address = require('../model/address.model')
 
 class OrderService {
   // 生成订单
   async createServiceOrder(order) {
     return await Order.create(order)
   }
-  // 获取订单列表
-  async getServiceOrder(pageNum, pageSize, state) {
+  // 获取订单列表(用户)
+  async getUserServiceOrder(pageNum, pageSize, user_id) {
+    const offset = (pageNum - 1) * pageSize
+    const { count, rows } = await Order.findAndCountAll({
+      offset,
+      limit: pageSize * 1,
+      attributes: [
+        'user_id',
+        'id',
+        'goods_info',
+        'total',
+        'order_number',
+        'createdAT',
+        'state',
+      ],
+      where: { user_id },
+      include: {
+        model: Address,
+        as: 'address',
+        attributes: ['address'],
+      },
+    })
+    return {
+      pageNum,
+      pageSize,
+      total: count,
+      list: rows,
+    }
+  }
+  // 获取订单列表(管理员后台)
+  async getServiceOrder(pageNum, pageSize) {
     const offset = (pageNum - 1) * pageSize
     const { count, rows } = await Order.findAndCountAll({
       attributes: [
@@ -17,9 +47,6 @@ class OrderService {
         'address_id',
         'state',
       ],
-      // where: {
-      //   state,
-      // },
       offset,
       limit: pageSize * 1,
     })

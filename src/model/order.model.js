@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize')
 const seq = require('../db/seq')
+const Address = require('./address.model')
 const Order = seq.define(
   'mobilePhone_order',
   {
@@ -41,5 +42,10 @@ const Order = seq.define(
 )
 
 // Order.sync({ alter: true })
+
+Order.belongsTo(Address, {
+  foreignKey: 'address_id',
+  as: 'address',
+})
 
 module.exports = Order

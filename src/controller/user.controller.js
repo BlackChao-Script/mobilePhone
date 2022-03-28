@@ -3,6 +3,7 @@ const {
   getUerInfo,
   updateById,
   getServiceUserNum,
+  getServiceUserInfo,
 } = require('../service/user.service')
 const { JWT_SECRET } = require('../constant/data')
 const jwt = require('jsonwebtoken')
@@ -10,6 +11,7 @@ const {
   userLoginError,
   updatePassowrdError,
   getUserNumError,
+  getUserInfoError,
 } = require('../constant/err.type')
 class UserController {
   // 注册
@@ -70,6 +72,21 @@ class UserController {
     } catch (err) {
       console.error('获取用户数量失败', err)
       return ctx.app.emit('error', getUserNumError, ctx)
+    }
+  }
+  // 获取用户信息
+  async getUserInfo(ctx) {
+    const { id } = ctx.state.user
+    try {
+      const res = await getServiceUserInfo(id)
+      ctx.body = {
+        code: 0,
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('获取用户信息失败', err)
+      return ctx.app.emit('error', getUserInfoError, ctx)
     }
   }
 }

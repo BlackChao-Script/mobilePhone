@@ -5,6 +5,7 @@ const {
   login,
   changePassword,
   getUserNum,
+  getUserInfo,
 } = require('../controller/user.controller')
 const {
   userValidator,
@@ -22,5 +23,7 @@ user.post('/login', userValidator, verifyLogin, login)
 user.patch('/modify', auth, crpytPassword, changePassword)
 // 获取用户数量
 user.get('/', getUserNum)
+// 获取用户信息
+user.get('/userinfo', auth, getUserInfo)
 
 module.exports = user

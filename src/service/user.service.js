@@ -32,6 +32,10 @@ class UserService {
       number: res.length,
     }
   }
+  // 获取用户信息
+  async getServiceUserInfo(id) {
+    return await User.findOne({ where: { id } })
+  }
 }
 
 module.exports = new UserService()
