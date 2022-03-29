@@ -10,14 +10,29 @@ const {
   goodsList,
   getGoodsNumber,
   getGoods,
+  createGoodsDet,
 } = require('../controller/goods.controller')
 
+const goodsRules = {
+  goods_name: { type: 'string', required: true },
+  goods_price: { type: 'number', required: true },
+  goods_num: { type: 'number', required: true },
+  goods_img: { type: 'string', required: true },
+  sort_id: { type: 'number', required: true },
+}
+const goodsDetRules = {
+  goods_id: { type: 'number', required: true },
+  title: { type: 'string', required: true },
+  promise: { type: 'string', required: true },
+  pay: { type: 'string', required: true },
+  rule: { type: 'string', required: true },
+}
 // 创建商品
 goods.post(
   '/creategoods',
   auth,
   hadAdminPermission,
-  validatorGoods,
+  validatorGoods(goodsRules),
   createGoods
 )
 // 修改商品
@@ -25,7 +40,7 @@ goods.put(
   '/creategoods/:id',
   auth,
   hadAdminPermission,
-  validatorGoods,
+  validatorGoods(goodsRules),
   modifyGoods
 )
 // 商品下架
@@ -37,6 +52,14 @@ goods.get('/', goodsList)
 // 获取商品总数
 goods.get('/getnumber', getGoodsNumber)
 // 获取商品详细数据
-goods.get('getGoods', auth, getGoods)
+goods.get('/getgoodsDet', auth, getGoods)
+// 添加商品详细数据
+goods.post(
+  '/creategoodsDet',
+  auth,
+  hadAdminPermission,
+  validatorGoods(goodsDetRules),
+  createGoodsDet
+)
 
 module.exports = goods

@@ -1,4 +1,5 @@
 const Goods = require('../model/goods.model')
+const GoodsDet = require('../model/goodsDet.model')
 const { BASE_PATH } = require('../constant/data')
 
 class GoodsService {
@@ -37,14 +38,37 @@ class GoodsService {
       list: rows,
     }
   }
-  // 获取商品详细
-  async getServiceGoodsData(id) {}
   // 获取商品数量
   async getServiceGoodsNumber() {
     const res = await Goods.findAll()
     return {
       number: res.length,
     }
+  }
+  // 获取商品详细数据
+  async getServiceGoodsData(id) {
+    const res = await GoodsDet.findOne({
+      where: { id },
+      include: {
+        model: Goods,
+        as: 'goods_info',
+        attributes: [
+          'goods_name',
+          'goods_price',
+          'goods_num',
+          'goods_img',
+          'createGoodsTime',
+        ],
+      },
+    })
+    res.dataValues.goods_info.goods_img =
+      BASE_PATH + res.dataValues.goods_info.goods_img
+    return res.dataValues
+  }
+  // 创建商品详细数据
+  async createServiceGoodsDet(data) {
+    const res = await GoodsDet.create(data)
+    return res.dataValues
   }
 }
 

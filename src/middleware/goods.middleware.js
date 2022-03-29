@@ -1,20 +1,16 @@
 const { validatorGoodsError } = require('../constant/err.type')
 // 校验商品数据
-const validatorGoods = async (ctx, next) => {
-  try {
-    ctx.verifyParams({
-      goods_name: { type: 'string', required: true },
-      goods_price: { type: 'number', required: true },
-      goods_num: { type: 'number', required: true },
-      goods_img: { type: 'string', required: true },
-      sort_id: { type: 'number', required: true },
-    })
-  } catch (err) {
-    console.error(err)
-    validatorGoodsError.result = err
-    return ctx.app.emit('error', validatorGoodsError, ctx)
+const validatorGoods = (rules) => {
+  return async (ctx, next) => {
+    try {
+      ctx.verifyParams(rules)
+    } catch (err) {
+      console.error(err)
+      validatorGoodsError.result = err
+      return ctx.app.emit('error', validatorGoodsError, ctx)
+    }
+    await next()
   }
-  await next()
 }
 
 module.exports = {

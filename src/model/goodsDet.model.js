@@ -11,7 +11,23 @@ const GoodsDet = seq.define(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: '商品详细标题',
+      allowNull: false,
+      comment: '商品详细标题',
+    },
+    promise: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      comment: '商品承诺',
+    },
+    pay: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      comment: '支付方式',
+    },
+    rule: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      comment: '支付规则',
     },
   },
   {

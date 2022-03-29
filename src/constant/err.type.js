@@ -118,6 +118,11 @@ module.exports = {
     message: '获取商品详细失败',
     result: '',
   },
+  createGoodsDetError: {
+    code: '10029',
+    message: '创建商品详细失败',
+    result: '',
+  },
   // 轮播图错误
   validatorCarouselError: {
     code: '10030',
