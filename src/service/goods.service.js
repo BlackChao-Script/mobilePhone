@@ -46,9 +46,9 @@ class GoodsService {
     }
   }
   // 获取商品详细数据
-  async getServiceGoodsData(id) {
+  async getServiceGoodsData(goods_id) {
     const res = await GoodsDet.findOne({
-      where: { id },
+      where: { goods_id },
       include: {
         model: Goods,
         as: 'goods_info',
@@ -69,6 +69,11 @@ class GoodsService {
   async createServiceGoodsDet(data) {
     const res = await GoodsDet.create(data)
     return res.dataValues
+  }
+  // 更新商品详细数据
+  async updateServiceGoodsDet(goods_id, data) {
+    const res = await GoodsDet.update(data, { where: { goods_id } })
+    return res[0] > 0 ? true : false
   }
 }
 

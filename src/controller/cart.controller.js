@@ -50,7 +50,7 @@ class CartController {
   // 更新购物车
   async updateCart(ctx) {
     const { id } = ctx.request.params
-    const { number, selected = false } = ctx.request.body
+    const { number, selected } = ctx.request.body
     try {
       if (number === undefined && selected === undefined) {
         console.error('number与selected不能同时为空')
@@ -69,9 +69,8 @@ class CartController {
   }
   // 删除购物车
   async deleteCart(ctx) {
-    const { ids } = ctx.request.body
     try {
-      const res = await deleteServiceCart(ids)
+      const res = await deleteServiceCart(ctx.params.id)
       ctx.body = {
         code: 0,
         message: '删除购物车成功',

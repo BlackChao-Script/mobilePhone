@@ -26,7 +26,7 @@ cart.patch(
   updateCart
 )
 // 删除购物车
-cart.delete('/', auth, validatorCart({ ids: 'array' }), deleteCart)
+cart.delete('/:id', auth, deleteCart)
 // 全选
 cart.post('/selectAll', auth, selectAllCart(true))
 // 全不选

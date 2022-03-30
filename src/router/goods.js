@@ -11,6 +11,7 @@ const {
   getGoodsNumber,
   getGoods,
   createGoodsDet,
+  updateGoodsDet,
 } = require('../controller/goods.controller')
 
 const goodsRules = {
@@ -61,5 +62,7 @@ goods.post(
   validatorGoods(goodsDetRules),
   createGoodsDet
 )
+// 修改商品详细数据
+goods.put('/updategoodsdet/:id', auth, hadAdminPermission, updateGoodsDet)
 
 module.exports = goods

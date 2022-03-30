@@ -123,6 +123,11 @@ module.exports = {
     message: '创建商品详细失败',
     result: '',
   },
+  updateGoodsDetError: {
+    code: '10030',
+    message: '更新商品详细数据失败',
+    result: '',
+  },
   // 轮播图错误
   validatorCarouselError: {
     code: '10030',

@@ -1,6 +1,7 @@
 const { Op } = require('sequelize')
 const Cart = require('../model/cart.model')
 const Goods = require('../model/goods.model')
+const { BASE_PATH } = require('../constant/data')
 class CartService {
   // 添加购物车
   async addServiceCart(user_id, goods_id) {
@@ -39,6 +40,10 @@ class CartService {
         attributes: ['id', 'goods_name', 'goods_price', 'goods_img'],
       },
     })
+    rows.forEach((element) => {
+      element.dataValues.goods_info.goods_img =
+        BASE_PATH + element.dataValues.goods_info.goods_img
+    })
     return {
       pageNum,
       pageSzie,
@@ -52,18 +57,13 @@ class CartService {
     const res = await Cart.findByPk(id)
     if (!res) return ''
     number !== undefined ? (res.number = number) : ''
-    res.selected !== undefined ? (res.selected = selected) : ''
+    selected !== undefined ? (res.selected = selected) : ''
     return await res.save()
   }
   // 删除购物车
-  async deleteServiceCart(ids) {
-    return await Cart.destroy({
-      where: {
-        id: {
-          [Op.in]: ids,
-        },
-      },
-    })
+  async deleteServiceCart(id) {
+    const res = await Cart.destroy({ where: { id } })
+    return res[0] > 0 ? true : false
   }
   // 全选与取消全选
   async selectServiceAllCarts(user_id, selected) {

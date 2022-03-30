@@ -7,6 +7,7 @@ const {
   getServiceGoodsNumber,
   getServiceGoodsData,
   createServiceGoodsDet,
+  updateServiceGoodsDet,
 } = require('../service/goods.service')
 const {
   createGoodsError,
@@ -18,6 +19,7 @@ const {
   getGoodsNumberError,
   getGoodsError,
   createGoodsDetError,
+  updateGoodsDetError,
 } = require('../constant/err.type')
 
 class GoodsController {
@@ -145,6 +147,20 @@ class GoodsController {
     } catch (err) {
       console.error('创建商品详细数据失败', err)
       return ctx.app.emit('error', createGoodsDetError, ctx)
+    }
+  }
+  // 更新商品详细
+  async updateGoodsDet(ctx) {
+    try {
+      await updateServiceGoodsDet(ctx.params.id, ctx.request.body)
+      ctx.body = {
+        code: 0,
+        message: '更新商品详细数据成功',
+        result: '',
+      }
+    } catch (err) {
+      console.error('更新商品详细数据失败')
+      return ctx.app.emit('error', updateGoodsDetError, ctx)
     }
   }
 }
