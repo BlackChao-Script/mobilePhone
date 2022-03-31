@@ -75,6 +75,21 @@ class GoodsService {
     const res = await GoodsDet.update(data, { where: { goods_id } })
     return res[0] > 0 ? true : false
   }
+  // 商品模糊搜索
+  async searcServicehGoods(keyWord) {
+    const res = await Goods.findAll()
+    const fuzzyQuery = (list, keyWord) => {
+      const arr = []
+      list.forEach((element) => {
+        if (element.goods_name.indexOf(keyWord) >= 0) {
+          element.dataValues.goods_img = BASE_PATH + element.dataValues.goods_img
+          arr.push(element)
+        }
+      })
+      return arr
+    }
+    return fuzzyQuery(res, keyWord)
+  }
 }
 
 module.exports = new GoodsService()

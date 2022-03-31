@@ -12,6 +12,7 @@ const {
   getGoods,
   createGoodsDet,
   updateGoodsDet,
+  searchGoods,
 } = require('../controller/goods.controller')
 
 const goodsRules = {
@@ -64,5 +65,7 @@ goods.post(
 )
 // 修改商品详细数据
 goods.put('/updategoodsdet/:id', auth, hadAdminPermission, updateGoodsDet)
+// 商品模糊搜素
+goods.get('/serch', auth, searchGoods)
 
 module.exports = goods

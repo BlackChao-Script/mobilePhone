@@ -124,8 +124,13 @@ module.exports = {
     result: '',
   },
   updateGoodsDetError: {
-    code: '10030',
+    code: '100290',
     message: '更新商品详细数据失败',
+    result: '',
+  },
+  searchGoodsError: {
+    code: '100291',
+    message: '商品模糊搜索失败',
     result: '',
   },
   // 轮播图错误
