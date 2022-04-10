@@ -25,6 +25,16 @@ cart.patch(
   }),
   updateCart
 )
+// 更新购物车(uniapp)
+cart.put(
+  '/:id',
+  auth,
+  validatorCart({
+    number: { type: 'number', required: false },
+    selected: { type: 'boolean', required: false },
+  }),
+  updateCart
+)
 // 删除购物车
 cart.delete('/:id', auth, deleteCart)
 // 全选

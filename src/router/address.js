@@ -41,5 +41,7 @@ address.put(
 address.delete('/:id', auth, deleteAddress)
 // 设为默认地址
 address.patch('/:id', auth, isDefault)
+// 设为默认地址(uniapp)
+address.put('/def/:id', auth, isDefault)
 
 module.exports = address
