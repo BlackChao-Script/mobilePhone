@@ -9,6 +9,7 @@ const {
   createServiceGoodsDet,
   updateServiceGoodsDet,
   searcServicehGoods,
+  findServiceGoods
 } = require('../service/goods.service')
 const {
   createGoodsError,
@@ -22,6 +23,7 @@ const {
   createGoodsDetError,
   updateGoodsDetError,
   searchGoodsError,
+  findGoodsError
 } = require('../constant/err.type')
 
 class GoodsController {
@@ -176,8 +178,23 @@ class GoodsController {
         result: res,
       }
     } catch (err) {
-      console.error('商品模糊搜索失败')
+      console.error('商品模糊搜索失败', err)
       return ctx.app.emit('error', searchGoodsError, ctx)
+    }
+  }
+  // 查找商品
+  async findGoods(ctx) {
+    const { ids } = ctx.request.query
+    try {
+      const res = await findServiceGoods(ids)
+      ctx.body = {
+        code: 0,
+        message: '',
+        result: res,
+      }
+    } catch (err) {
+      console.error('查找商品失败', err)
+      return ctx.app.emit('error', findGoodsError, ctx)
     }
   }
 }

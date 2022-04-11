@@ -82,13 +82,31 @@ class GoodsService {
       const arr = []
       list.forEach((element) => {
         if (element.goods_name.indexOf(keyWord) >= 0) {
-          element.dataValues.goods_img = BASE_PATH + element.dataValues.goods_img
+          element.dataValues.goods_img =
+            BASE_PATH + element.dataValues.goods_img
           arr.push(element)
         }
       })
       return arr
     }
     return fuzzyQuery(res, keyWord)
+  }
+  // 查找商品
+  async findServiceGoods(ids) {
+    const data = ids.split(',')
+    const arr = []
+    for (const i in data) {
+      const res = await Goods.findOne({
+        where: {
+          id: data[i],
+        },
+      })
+      arr.push(res.dataValues)
+    }
+    arr.forEach((i) => {
+      i.goods_img = BASE_PATH + i.goods_img
+    })
+    return arr
   }
 }
 

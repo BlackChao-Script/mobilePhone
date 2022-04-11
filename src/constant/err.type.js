@@ -133,6 +133,11 @@ module.exports = {
     message: '商品模糊搜索失败',
     result: '',
   },
+  findGoodsError: {
+    code: '100292',
+    message:"查找商品失败",
+    result:''
+  },
   // 轮播图错误
   validatorCarouselError: {
     code: '10030',
