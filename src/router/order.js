@@ -34,6 +34,15 @@ order.patch(
   }),
   updateOrder
 )
+// 更新订单状态(uniapp)
+order.put(
+  '/:id',
+  auth,
+  validatorOrder({
+    state: 'int',
+  }),
+  updateOrder
+)
 // 获取订单数量
 order.get('/ordernum', getOrderNum)
 

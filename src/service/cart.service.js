@@ -62,7 +62,17 @@ class CartService {
   }
   // 删除购物车
   async deleteServiceCart(id) {
-    const res = await Cart.destroy({ where: { id } })
+    let res = []
+    if (id.indexOf(',') != -1) {
+      let data = []
+      data = id.split(',')
+      for (let i of data) {
+        console.log(i)
+        res = await Cart.destroy({ where: { id:i } })
+      }
+    } else {
+      res = await Cart.destroy({ where: { id } })
+    }
     return res[0] > 0 ? true : false
   }
   // 全选与取消全选

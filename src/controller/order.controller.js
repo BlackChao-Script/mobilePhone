@@ -39,7 +39,7 @@ class OrderController {
   // 获取订单列表(用户)
   async getUserOrder(ctx) {
     const user_id = ctx.state.user.id
-    const { pageNum = 1, pageSize = 6 } = ctx.request.query
+    const { pageNum = 1, pageSize = 12 } = ctx.request.query
     try {
       const res = await getUserServiceOrder(pageNum, pageSize, user_id)
       ctx.body = {
