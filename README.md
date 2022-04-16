@@ -17,7 +17,5 @@ mobilePhone商城 项目是一套电商系统，包括: mobilePhone_mall (pc网�
 - [mobilePhone商城(PC端) mobilePhone_mall](https://github.com/BlackChao-Script/mobilePhone_mall)
 - [mobilePhone商城(小程序 + PE端) mobilePhone_mall](https://github.com/BlackChao-Script/mobilePhone_miniapp)
 
-- 
-
 
 
